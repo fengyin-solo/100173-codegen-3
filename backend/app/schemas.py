@@ -244,3 +244,16 @@ class SettleEntry(BaseModel):
     field_5: str | None = None  # 审核人员
     field_6: str | None = None  # 付款日期
     field_7: str | None = None  # 结算状态
+
+
+class ComplaintEntry(BaseModel):
+    """投诉与回访明细结构。"""
+
+    field_0: str | None = None  # 投诉单号
+    field_1: str | None = None  # 来源
+    field_2: str | None = None  # 诉求描述
+    field_3: str | None = None  # 受理人
+    field_4: str | None = None  # 首次受理时间
+    field_5: str | None = None  # 最新回访结果
+    field_6: str | None = None  # 最新回访时间
+    field_7: str | None = None  # 状态

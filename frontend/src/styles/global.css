@@ -33,3 +33,35 @@ body { margin: 0; background: #f6f8fb; color: #1f2937; }
 .link { border: none; background: none; color: var(--brand); cursor: pointer; padding: 0; }
 .page-foot { display: flex; justify-content: space-between; margin-top: 8px; font-size: 12px; color: var(--muted); }
 .error-text { color: #b42318; }
+
+/* 投诉与回访 */
+.stat-card.stat-warn { border-color: #f04438; background: #fff5f4; }
+.stat-card.stat-warn .stat-value { color: #d92d20; }
+.complaint-group { margin-bottom: 18px; }
+.group-title { font-size: 14px; margin: 10px 0 6px; display: flex; align-items: center; gap: 8px; }
+.group-count { font-size: 12px; color: #fff; background: var(--brand); border-radius: 10px; padding: 0 8px; line-height: 18px; }
+.data-table tr.row-overdue { background: #fff1f0; }
+.data-table tr.row-overdue td { color: #b42318; }
+.status-tag { display: inline-block; padding: 1px 8px; border-radius: 10px; font-size: 12px; background: #eef2ff; color: #344054; }
+.status-tag.tag-pending { background: #fffaeb; color: #b54708; }
+.status-tag.tag-done { background: #ecfdf3; color: #027a48; }
+.status-tag.tag-revoked { background: #f2f4f7; color: #667085; }
+.status-tag.tag-overdue { background: #fef3f2; color: #b42318; border: 1px solid #fda29b; }
+.link.danger { color: #b42318; }
+.detail-cell { background: #fafbfc; }
+.detail-grid { display: flex; gap: 32px; flex-wrap: wrap; }
+.detail-grid > div { flex: 1; min-width: 280px; }
+.detail-grid h4 { margin: 0 0 6px; font-size: 13px; }
+.history-list { margin: 0; padding-left: 18px; font-size: 12px; color: #475467; }
+.history-list li { margin-bottom: 4px; }
+.muted-text { color: var(--muted); font-size: 12px; margin: 2px 0; }
+.overdue-text { color: #b42318; font-weight: 600; }
+.empty-block { background: #fff; border: 1px dashed var(--border); border-radius: 8px; padding: 32px; }
+.modal-mask { position: fixed; inset: 0; background: rgba(16, 24, 40, 0.45); display: flex; align-items: center; justify-content: center; z-index: 100; }
+.modal { background: #fff; border-radius: 10px; padding: 20px 24px; width: 480px; max-width: calc(100vw - 32px); }
+.modal h3 { margin: 0 0 12px; font-size: 16px; }
+.form-item { display: block; margin-bottom: 10px; }
+.form-item span { display: block; font-size: 12px; color: var(--muted); margin-bottom: 4px; }
+.form-item input, .form-item textarea { width: 100%; padding: 6px 8px; border: 1px solid var(--border); border-radius: 6px; font: inherit; resize: vertical; }
+.modal-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 12px; }
+.btn:disabled { opacity: 0.6; cursor: not-allowed; }

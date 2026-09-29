@@ -4,6 +4,8 @@
 """
 from __future__ import annotations
 
+from collections.abc import Callable
+from copy import deepcopy
 from typing import Any
 
 from app.seed import SEED_ROWS
@@ -11,9 +13,16 @@ from app.seed import SEED_ROWS
 
 class Store:
     def __init__(self) -> None:
+        # 投诉单这类记录内嵌受理/回访历史列表，必须深拷贝，否则改动会串到示例数据常量上。
         self._tables: dict[str, list[dict[str, Any]]] = {
-            name: [dict(row) for row in rows] for name, rows in SEED_ROWS.items()
+            name: deepcopy(rows) for name, rows in SEED_ROWS.items()
         }
+        # 概览汇总前的刷新钩子：像「超期未回访」这种依赖当前时间的标记，
+        # 先由各业务模块刷新成最新值，保证概览卡片和明细页读的是同一份数据。
+        self._overview_hooks: list[Callable[[], None]] = []
+
+    def on_overview(self, hook: Callable[[], None]) -> None:
+        self._overview_hooks.append(hook)
 
     def module_names(self) -> list[str]:
         return sorted(self._tables)
@@ -28,6 +37,8 @@ class Store:
         return None
 
     def overview(self) -> dict[str, object]:
+        for hook in self._overview_hooks:
+            hook()
         modules: list[dict[str, object]] = []
         for name in self.module_names():
             rows = self.rows(name)
